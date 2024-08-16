@@ -1,3 +1,5 @@
+import { WeatherCode } from "../api/type";
+
 type WeatherImage = Record<
   'day' | 'night',
   {
@@ -6,35 +8,7 @@ type WeatherImage = Record<
   }
 >;
 
-type WeatherCode =
-  | '0'
-  | '1'
-  | '2'
-  | '3'
-  | '45'
-  | '48'
-  | '51'
-  | '53'
-  | '55'
-  | '56'
-  | '57'
-  | '61'
-  | '63'
-  | '65'
-  | '66'
-  | '67'
-  | '71'
-  | '73'
-  | '75'
-  | '77'
-  | '80'
-  | '81'
-  | '82'
-  | '85'
-  | '86'
-  | '95'
-  | '96'
-  | '99';
+
 
 const items: Record<WeatherCode, WeatherImage> = {
   '0': {
@@ -330,6 +304,7 @@ const items: Record<WeatherCode, WeatherImage> = {
  */
 function getWeatherImage(weatherCode: WeatherCode) {
   // Write implementation for this function to return the "day" image for a given weather code.
+  return items[weatherCode];
 }
 
 export default getWeatherImage;

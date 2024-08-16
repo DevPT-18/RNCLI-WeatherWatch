@@ -1,19 +1,31 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import WeatherSearchScreen from './src/screens/WeatherSearchScreen';
 
-export default function App() {
+// Define a simple theme object
+const theme = {
+  colors: {
+    background: '#ffffff',
+    text: '#000000',
+  },
+};
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
+    <SafeAreaView
+      style={[styles.container, {backgroundColor: theme.colors.background}]}>
+      <WeatherSearchScreen />
+    </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
 });
+
+export default App;
