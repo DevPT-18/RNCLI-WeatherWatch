@@ -8,6 +8,7 @@ import {
   Image,
   StyleSheet,
   Alert,
+  Platform,
 } from 'react-native';
 import getWeatherImage from '../helpers/getWeatherImage';
 import {LocationResult, WeatherData} from '../api/type';
@@ -32,7 +33,6 @@ const WeatherSearchScreen: React.FC = () => {
       const {latitude, longitude} = geoResponse[0];
       const weatherResponse = await fetchWeatherDetails(latitude, longitude);
       if (weatherResponse) {
-        console.log(JSON.stringify(weatherResponse));
         const dailyData = weatherResponse.data.daily;
 
         const parsedData = dailyData.time.map(
@@ -50,7 +50,6 @@ const WeatherSearchScreen: React.FC = () => {
       }
     } catch (error) {
       Alert.alert('Error', 'Failed to load weather data');
-      console.error(error);
     }
   };
 
@@ -151,6 +150,7 @@ const styles = StyleSheet.create({
     padding: 4,
     borderBottomWidth: 1,
     borderColor: '#000000',
+    marginTop: Platform.OS === 'ios' ? 35 : 0,
     marginBottom: 10,
   },
   searchInput: {
